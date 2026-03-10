@@ -12,7 +12,7 @@
                     <h3 class="text-2xl font-semibold mb-8">Bem-vindo ao sistema de gerenciamento!</h3>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Botão Clientes -->
+                        <!-- Botão Clientes
                         <a href="{{ route('clientes.index') }}" class="block">
                             <div class="bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-lg shadow-lg p-6 transition duration-300 transform hover:scale-105 cursor-pointer h-full">
                                 <svg class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@
                             </div>
                         </a>
 
-                        <!-- Botão Pedidos -->
+                         Botão Pedidos
                         <a href="{{ route('pedidos.index') }}" class="block">
                             <div class="bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-lg shadow-lg p-6 transition duration-300 transform hover:scale-105 cursor-pointer h-full">
                                 <svg class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@
                             </div>
                         </a>
 
-                        <!-- Botão Produtos -->
+                         Botão Produtos
                         <a href="{{ route('produtos.index') }}" class="block">
                             <div class="bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 rounded-lg shadow-lg p-6 transition duration-300 transform hover:scale-105 cursor-pointer h-full">
                                 <svg class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -45,7 +45,7 @@
                             </div>
                         </a>
 
-                        <!-- Botão Fornecedores -->
+                        Botão Fornecedores
                         <a href="{{ route('fornecedores.index') }}" class="block">
                             <div class="bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-lg shadow-lg p-6 transition duration-300 transform hover:scale-105 cursor-pointer h-full">
                                 <svg class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@
                             </div>
                         </a>
 
-                        <!-- Botão Estoque -->
+                        Botão Estoque
                         <a href="{{ route('estoque.index') }}" class="block">
                             <div class="bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-lg shadow-lg p-6 transition duration-300 transform hover:scale-105 cursor-pointer h-full">
                                 <svg class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@
                                 <h4 class="text-xl font-bold text-white">Estoque</h4>
                                 <p class="text-red-100 text-sm mt-2">Gerenciar estoque</p>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
