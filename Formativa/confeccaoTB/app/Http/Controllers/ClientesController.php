@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use \App\Models\Clientes;
+
 class ClientesController extends Controller
 {
     public function index() {
-        $Clientes = \App\Models\Clientes::all(); // busca todos os clientes
+        $Clientes = Clientes::all(); // busca todos os clientes
         return view('Clientes.index', compact('Clientes'));
     }
 
@@ -27,9 +29,34 @@ class ClientesController extends Controller
         ]);
 
         // 2. Salva o novo cliente
-        \App\Models\Clientes::create($request->all());
+        Clientes::create($request->all());
 
         // 3. redirect de volta para a lista com uma mensagem de sucesso
         return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso!');
+    }
+
+    // abre a tela de edicao
+    public function edit(Clientes $cliente) {
+        return view('clientes.edit', ['Clientes' => $cliente]);
+    }
+
+    // Salva alrteracao no banco
+    public function update(Request $request, Clientes $cliente) {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|unique:Clientes,cpf,' . $cliente->id,
+            'email' => 'required|email|unique:Clientes,email,' . $cliente->id,
+            'telefone' => 'required',
+            'endereco' => 'string',
+        ]);
+
+        $cliente->update($request->all());
+        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado!');
+    }
+
+    // Excluir clientes
+    public function destroy(Clientes $cliente) {
+        $cliente->delete();
+        return redirect()->route('clientes.index')->with('success', 'Cliente removido!');
     }
 }

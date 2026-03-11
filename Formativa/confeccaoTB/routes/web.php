@@ -12,20 +12,63 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
 // novas rotas da aula do dia 10/03
 Route::get('/clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
+
+// rotas para editar dados do banco
+Route::get('/clientes/{cliente}/edit', [ClientesController::class, 'edit'])->name('clientes.edit')->middleware('auth');
+Route::put('/clientes/{cliente}', [ClientesController::class, 'update'])->name('clientes.update')->middleware('auth');
+Route::delete('/clientes/{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy')->middleware('auth');
+
+// Rota para RECEBER os dados e salvar (POST)
 Route::post('/clientes', [ClientesController::class, 'store'])->name('clientes.store');
 
+
 Route::get('/pedidos/create', [PedidosController::class, 'create'])->name('pedidos.create');
+// rotas para editar dados do banco
+Route::get('/pedidos/{pedidos}/edit', [PedidosController::class, 'edit'])->name('pedidos.edit')->middleware('auth');
+Route::put('/pedidos/{pedidos}', [PedidosController::class,'update'])->name('pedidos.update')->middleware('auth');
+Route::delete('/pedidos/{pedidos}', [PedidosController::class,'destroy'])->name('pedidos.destroy')->middleware('auth');
+
+// rota para RECEBER os dados e salvar (POST)
 Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
 
+
+// PRODUTOS
 Route::get('/produtos/create', [ProdutosController::class, 'create'])->name('produtos.create');
+// rotas para editar dados do banco
+Route::get('/produtos/{produtos}/edit', [ProdutosController::class,'edit'])->name('produtos.edit')->middleware('auth');
+Route::put('/produtos/{produtos}', [ProdutosController::class,'update'])->name('produtos.update')->middleware('auth');
+Route::delete('/produtos/{produtos}', [ProdutosController::class,'destroy'])->name('produtos.destroy')->middleware('auth');
+
+// rota para RECEBER os dados e salvar (POST)
 Route::post('/produtos', [ProdutosController::class, 'store'])->name('produtos.store');
 
+
+
+// FORNECEDORES
 Route::get('/fornecedores/create', [FornecedoresController::class, 'create'])->name('fornecedores.create');
+// rotas para editar dados do banco
+Route::get('/fornecedores/{fornecedores}/edit', [FornecedoresController::class, 'edit'])->name('fornecedores.edit')->middleware('auth');
+Route::put('/fornecedores/{fornecedores}', [FornecedoresController::class,'update'])->name('fornecedores.update')->middleware('auth');
+Route::delete('/fornecedores/{fornecedores}', [FornecedoresController::class, 'destroy'])->name('fornecedores.destroy')->middleware('auth');
+
+// rota para RECEBER os dados e salvar (POST)
 Route::post('/fornecedores', [FornecedoresController::class, 'store'])->name('fornecedores.store');
 
+
+// ESTOQUE
 Route::get('/estoque/create', [EstoqueController::class, 'create'])->name('estoque.create');
+// rotas para editar dados do banco
+Route::get('/estoque/{estoque}/edit', [EstoqueController::class, 'edit'])->name('estoque.edit')->middleware('auth');
+route::put('/estoque/{estoque}', [EstoqueController::class,'update'])->name('estoque.update')->middleware('auth');
+Route::delete('/estoque/{estoque}', [EstoqueController::class, 'destroy'])->name('estoque.destroy')->middleware('auth');
+
+// rota para RECEBER os dados e salvar (POST)
 Route::post('/estoque', [EstoqueController::class, 'store'])->name('estoque.store');
 
 
