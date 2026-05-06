@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação do Site Pokemon</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --ink: #111827;
+            --muted: #4b5563;
+            --line: #d1d5db;
+            --soft: #f3f4f6;
+            --accent: #1d4ed8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #e5e7eb;
+            color: var(--ink);
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.45;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 12px;
+            padding: 24mm 23mm 24mm;
+            background: #ffffff;
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.18);
+            page-break-after: always;
+        }
+
+        .blank-page {
+            padding: 0;
+        }
+
+        .doc-title {
+            margin: 0 0 18px;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            font-size: 21px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        h2 {
+            margin: 16px 0 8px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            margin: 12px 0 6px;
+            font-size: 14px;
+        }
+
+        p {
+            margin: 0 0 10px;
+            text-align: justify;
+            font-size: 12.5pt;
+        }
+
+        ul,
+        ol {
+            margin: 6px 0 12px 22px;
+            padding: 0;
+            font-size: 12.5pt;
+        }
+
+        li {
+            margin: 4px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 14px;
+            font-size: 10.5pt;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--line);
+            padding: 6px 7px;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .summary-title {
+            margin-top: 26mm;
+        }
+
+        .toc {
+            margin-top: 20px;
+            font-size: 12.5pt;
+        }
+
+        .toc-row {
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            gap: 8px;
+            align-items: baseline;
+            margin: 9px 0;
+            font-weight: 700;
+        }
+
+        .toc-row.sub {
+            padding-left: 18px;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .toc-row.deep {
+            padding-left: 38px;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .dots {
+            border-bottom: 1px dotted #6b7280;
+            transform: translateY(-3px);
+        }
+
+        .page-number {
+            position: absolute;
+            right: 23mm;
+            bottom: 13mm;
+            font-size: 11pt;
+            color: var(--muted);
+        }
+
+        .note {
+            border-left: 4px solid var(--accent);
+            background: #eff6ff;
+            padding: 10px 12px;
+            margin: 12px 0;
+            font-size: 11.5pt;
+        }
+
+        .compact {
+            font-size: 10.3pt;
+        }
+
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .class-box,
+        .entity-box,
+        .flow-box {
+            border: 1px solid #9ca3af;
+            background: #ffffff;
+        }
+
+        .class-box h3,
+        .entity-box h3,
+        .flow-box h3 {
+            margin: 0;
+            padding: 7px 8px;
+            background: #e5e7eb;
+            border-bottom: 1px solid #9ca3af;
+            font-size: 11pt;
+        }
+
+        .class-box ul,
+        .entity-box ul,
+        .flow-box ol {
+            margin: 8px 10px 10px 24px;
+            font-size: 10.5pt;
+        }
+
+        .arrow {
+            margin: 5px 0;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="page blank-page" aria-label="Página em branco para capa"></section>
+
+    <section class="page">
+        <h1 class="doc-title summary-title">Sumário</h1>
+        <div class="toc">
+            <div class="toc-row"><span>1.</span><span>INTRODUÇÃO</span><span class="dots"></span><span>1</span></div>
+            <div class="toc-row"><span>2.</span><span>SITUAÇÃO PROBLEMA</span><span class="dots"></span><span>2</span></div>
+            <div class="toc-row"><span>3.</span><span>LEVANTAMENTO DE REQUISITOS</span><span class="dots"></span><span>3</span></div>
+            <div class="toc-row sub"><span>3.1.</span><span>REQUISITOS FUNCIONAIS</span><span class="dots"></span><span>4</span></div>
+            <div class="toc-row sub"><span>3.2.</span><span>REQUISITOS NÃO FUNCIONAIS</span><span class="dots"></span><span>5</span></div>
+            <div class="toc-row sub"><span>3.3.</span><span>REGRAS DE NEGÓCIOS</span><span class="dots"></span><span>6</span></div>
+            <div class="toc-row sub"><span>3.4.</span><span>HISTÓRIAS DE USUÁRIOS</span><span class="dots"></span><span>7</span></div>
+            <div class="toc-row"><span>4.</span><span>METODOLOGIA</span><span class="dots"></span><span>8</span></div>
+            <div class="toc-row"><span>5.</span><span>PROTOTIPAGEM</span><span class="dots"></span><span>9</span></div>
+            <div class="toc-row"><span>6.</span><span>DIAGRAMAS</span><span class="dots"></span><span>10</span></div>
+            <div class="toc-row sub"><span>6.1.</span><span>DIAGRAMA DE CLASSE</span><span class="dots"></span><span>11</span></div>
+            <div class="toc-row sub"><span>6.2.</span><span>DIAGRAMA DE SEQUÊNCIA</span><span class="dots"></span><span>12</span></div>
+            <div class="toc-row sub"><span>6.3.</span><span>BANCO DE DADOS</span><span class="dots"></span><span>13</span></div>
+            <div class="toc-row deep"><span>6.3.1.</span><span>MODELO CONCEITUAL</span><span class="dots"></span><span>14</span></div>
+            <div class="toc-row deep"><span>6.3.2.</span><span>MODELO LÓGICO</span><span class="dots"></span><span>15</span></div>
+            <div class="toc-row"><span>7.</span><span>CONCLUSÃO</span><span class="dots"></span><span>16</span></div>
+        </div>
+    </section>
+
+    <section class="page">
+        <h1>1. Introdução</h1>
+        <p>
+            Este documento apresenta a documentação técnica e funcional do site de Pokemon desenvolvido em Laravel. O sistema tem como objetivo oferecer uma Pokedex web integrada à PokeAPI, permitindo consulta de informações oficiais, listagem com filtros, visualização detalhada de Pokemon, criação de novos registros personalizados e fusão de dois Pokemon em um novo cadastro.
+        </p>
+        <p>
+            A aplicação foi construída com foco acadêmico, demonstrando consumo de APIs externas, organização em padrão MVC, persistência em banco de dados MySQL, upload e armazenamento de imagens, uso de views Blade e integração opcional com inteligência artificial por meio da API Groq. Os jogos existentes no projeto não fazem parte do escopo desta documentação, conforme solicitado.
+        </p>
+        <h2>Objetivo Geral</h2>
+        <p>
+            Desenvolver uma aplicação web capaz de consultar, exibir, filtrar, criar e armazenar Pokemon, combinando dados externos da PokeAPI com dados próprios cadastrados no banco da aplicação.
+        </p>
+        <h2>Objetivos Específicos</h2>
+        <ul>
+            <li>Disponibilizar uma lista nacional de Pokemon com filtros por nome, número, geração, tipagem, origem e ordenação.</li>
+            <li>Permitir consulta detalhada de cada Pokemon em uma tela de Pokedex.</li>
+            <li>Possibilitar o cadastro manual ou assistido por IA de novos Pokemon.</li>
+            <li>Permitir fusão entre dois Pokemon, incluindo Pokemon oficiais e Pokemon criados pelo usuário.</li>
+            <li>Armazenar imagens enviadas pelo usuário e dados estruturados no banco MySQL.</li>
+            <li>Disponibilizar endpoints de API para busca, detalhes, criação, atualização e exclusão de Pokemon.</li>
+        </ul>
+        <div class="page-number">1</div>
+    </section>
+
+    <section class="page">
+        <h1>2. Situação Problema</h1>
+        <p>
+            A PokeAPI oferece uma grande quantidade de informações oficiais sobre Pokemon, porém o consumo direto desses dados pode ser pouco amigável para usuários finais e limitado para atividades que exigem criação de conteúdo próprio. Além disso, os Pokemon criados por usuários não existem na API oficial e precisam ser armazenados em uma base própria para que possam aparecer na lista, na Pokedex e nas operações de fusão.
+        </p>
+        <p>
+            Antes das melhorias implementadas, a aplicação dependia principalmente da consulta direta à API e não possuía uma experiência completa para listagem filtrada, persistência robusta de novos Pokemon em banco de dados, armazenamento de imagens enviadas pelo usuário e geração assistida por IA. Isso gerava dificuldade para manter dados personalizados disponíveis após recarregamento da aplicação ou em ambientes diferentes.
+        </p>
+        <h2>Problemas Identificados</h2>
+        <ul>
+            <li>Necessidade de reunir Pokemon oficiais e personalizados em uma mesma listagem.</li>
+            <li>Necessidade de filtrar Pokemon por critérios úteis, como nome, ID, geração, tipo e origem.</li>
+            <li>Necessidade de salvar Pokemon criados e fusões de forma permanente no banco de dados.</li>
+            <li>Necessidade de armazenar imagens enviadas pelo usuário e exibi-las na Pokedex.</li>
+            <li>Necessidade de reduzir o esforço de preenchimento manual por meio de geração assistida por IA.</li>
+            <li>Necessidade de manter consistência entre registros oficiais da PokeAPI e registros personalizados.</li>
+        </ul>
+        <h2>Solução Proposta</h2>
+        <p>
+            A solução adotada consiste em um site Laravel que consome dados da PokeAPI para Pokemon oficiais, armazena registros personalizados na tabela <strong>pokemons</strong> e unifica ambas as fontes na interface. A aplicação também utiliza cache em arquivo para consultas externas, upload para imagens locais e uma camada de repositório para padronizar a leitura e escrita dos Pokemon criados pelo usuário.
+        </p>
+        <div class="page-number">2</div>
+    </section>
+
+    <section class="page">
+        <h1>3. Levantamento de Requisitos</h1>
+        <p>
+            O levantamento de requisitos foi realizado a partir das funcionalidades solicitadas para a atividade e da análise dos arquivos do projeto. O sistema atende ao domínio de uma Pokedex personalizada, onde o usuário pode consultar informações de Pokemon oficiais, cadastrar seus próprios Pokemon e criar fusões.
+        </p>
+        <h2>Atores</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ator</th>
+                    <th>Descrição</th>
+                    <th>Interações Principais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Usuário visitante</td>
+                    <td>Pessoa que acessa o site para consultar Pokemon.</td>
+                    <td>Listar, filtrar, pesquisar e visualizar detalhes.</td>
+                </tr>
+                <tr>
+                    <td>Usuário criador</td>
+                    <td>Pessoa que utiliza os formulários para criar Pokemon ou fusões.</td>
+                    <td>Cadastrar dados, enviar imagem, usar Groq e salvar no banco.</td>
+                </tr>
+                <tr>
+                    <td>PokeAPI</td>
+                    <td>Serviço externo com dados oficiais de Pokemon.</td>
+                    <td>Fornece detalhes, sprites, espécies, evoluções, tipos e movimentos.</td>
+                </tr>
+                <tr>
+                    <td>Groq</td>
+                    <td>Serviço externo opcional de IA.</td>
+                    <td>Gera descrições, status, habilidades, golpes e ilustrações SVG.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Escopo Funcional</h2>
+        <ul>
+            <li>Listagem geral em <strong>/pokedex/lista</strong>.</li>
+            <li>Pokedex detalhada em <strong>/pokedex</strong>, com suporte ao parâmetro <strong>id</strong>.</li>
+            <li>Escolha entre criar Pokemon ou fundir Pokemon em <strong>/pokedex/criar</strong>.</li>
+            <li>Criação manual ou assistida por IA em <strong>/pokedex/criar/manual</strong>.</li>
+            <li>Fusão de Pokemon em <strong>/pokedex/fundir</strong>.</li>
+            <li>Endpoints JSON para busca, detalhes, tipo, lendários, criação, atualização e exclusão.</li>
+        </ul>
+        <div class="note">
+            Os jogos não são considerados no levantamento desta documentação.
+        </div>
+        <div class="page-number">3</div>
+    </section>
+
+    <section class="page">
+        <h1>3.1. Requisitos Funcionais</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Requisito</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>RF01</td><td>Listar Pokemon</td><td>O sistema deve exibir Pokemon oficiais da PokeAPI e Pokemon personalizados em uma mesma listagem.</td></tr>
+                <tr><td>RF02</td><td>Pesquisar por nome ou ID</td><td>O usuário deve poder buscar Pokemon pelo nome ou pelo número da Pokedex.</td></tr>
+                <tr><td>RF03</td><td>Filtrar por geração</td><td>O usuário deve poder filtrar Pokemon por geração de Kanto até Paldea e também por criados/fusões.</td></tr>
+                <tr><td>RF04</td><td>Filtrar por tipo</td><td>O usuário deve poder filtrar por tipagens como fogo, água, planta, elétrico, fada e outras.</td></tr>
+                <tr><td>RF05</td><td>Filtrar por origem</td><td>O sistema deve separar registros da PokeAPI, manuais, gerados por IA e fusões.</td></tr>
+                <tr><td>RF06</td><td>Ordenar resultados</td><td>O usuário deve poder ordenar por número crescente, número decrescente, nome A-Z ou nome Z-A.</td></tr>
+                <tr><td>RF07</td><td>Exibir cards</td><td>Cada Pokemon deve ser apresentado em card contendo imagem, nome, ID, tipagens, geração e quantidade de evoluções disponíveis.</td></tr>
+                <tr><td>RF08</td><td>Abrir detalhes</td><td>Ao clicar em um card, o usuário deve ser redirecionado para a Pokedex detalhada do Pokemon escolhido.</td></tr>
+                <tr><td>RF09</td><td>Consultar Pokedex</td><td>A tela da Pokedex deve exibir imagem, nome, altura, peso, descrição, status, ataques, evoluções, variantes e locais.</td></tr>
+                <tr><td>RF10</td><td>Random Pokemon</td><td>A Pokedex deve permitir carregar um Pokemon aleatório pelo botão Random Pokemon.</td></tr>
+                <tr><td>RF11</td><td>Criar Pokemon manual</td><td>O usuário deve poder cadastrar um novo Pokemon preenchendo campos detalhados.</td></tr>
+                <tr><td>RF12</td><td>Criar Pokemon com IA</td><td>O usuário deve poder informar nome, tipagem, raridade e imagem, deixando a IA gerar os demais detalhes quando configurada.</td></tr>
+                <tr><td>RF13</td><td>Enviar imagem</td><td>O sistema deve aceitar upload de imagens em JPG, PNG, WEBP e GIF para Pokemon criados e fusões.</td></tr>
+                <tr><td>RF14</td><td>Fundir Pokemon</td><td>O usuário deve poder selecionar dois Pokemon e gerar uma fusão salva na Pokedex.</td></tr>
+                <tr><td>RF15</td><td>Persistir no banco</td><td>Pokemon criados e fusões devem ser salvos na tabela pokemons.</td></tr>
+                <tr><td>RF16</td><td>Disponibilizar API interna</td><td>O sistema deve oferecer endpoints JSON para busca, detalhes, criação, atualização e exclusão.</td></tr>
+            </tbody>
+        </table>
+        <div class="page-number">4</div>
+    </section>
+
+    <section class="page">
+        <h1>3.2. Requisitos Não Funcionais</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Requisito</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>RNF01</td><td>Usabilidade</td><td>A interface deve ser simples, responsiva e organizada em telas de lista, Pokedex, criação e fusão.</td></tr>
+                <tr><td>RNF02</td><td>Responsividade</td><td>As views devem se adaptar a desktop e dispositivos móveis usando Tailwind CSS.</td></tr>
+                <tr><td>RNF03</td><td>Persistência</td><td>Os dados personalizados devem permanecer armazenados em banco MySQL.</td></tr>
+                <tr><td>RNF04</td><td>Segurança de upload</td><td>O sistema deve restringir uploads a formatos de imagem e limitar tamanho máximo de arquivo.</td></tr>
+                <tr><td>RNF05</td><td>Integração externa</td><td>A aplicação deve tratar falhas da PokeAPI, tradução e Groq sem interromper toda a experiência.</td></tr>
+                <tr><td>RNF06</td><td>Desempenho</td><td>Consultas externas recorrentes devem usar cache em arquivo para reduzir chamadas repetidas.</td></tr>
+                <tr><td>RNF07</td><td>Manutenibilidade</td><td>O sistema deve separar responsabilidades entre controller, model, repository, migrations e views.</td></tr>
+                <tr><td>RNF08</td><td>Compatibilidade</td><td>O sistema deve funcionar no ambiente Laravel com PHP, MySQL, Vite e Blade.</td></tr>
+                <tr><td>RNF09</td><td>Integridade</td><td>O número da Pokedex de registros criados deve ser único para evitar conflitos.</td></tr>
+                <tr><td>RNF10</td><td>Legibilidade</td><td>As informações exibidas devem possuir nomes tratados, cores por tipagem e organização visual clara.</td></tr>
+            </tbody>
+        </table>
+        <h2>Critérios de Qualidade</h2>
+        <ul>
+            <li>A listagem deve carregar resultados paginados para manter a navegação mais leve.</li>
+            <li>A criação deve validar entradas obrigatórias antes de salvar no banco.</li>
+            <li>Pokemon criados devem ser encontrados pela busca da Pokedex e pela lista.</li>
+            <li>O upload de imagem deve ser armazenado no disco público do Laravel.</li>
+        </ul>
+        <div class="page-number">5</div>
+    </section>
+
+    <section class="page">
+        <h1>3.3. Regras de Negócios</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Regra</th>
+                    <th>Aplicação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>RN01</td><td>Numeração personalizada</td><td>Pokemon criados devem usar número acima de 1025 para não conflitar com os registros oficiais da PokeAPI.</td></tr>
+                <tr><td>RN02</td><td>Número único</td><td>Não deve existir mais de um Pokemon com o mesmo pokedex_number no banco.</td></tr>
+                <tr><td>RN03</td><td>Tipagem válida</td><td>As tipagens devem pertencer à lista de tipos reconhecidos pelo sistema.</td></tr>
+                <tr><td>RN04</td><td>Origem do registro</td><td>Todo Pokemon personalizado deve possuir origem, como manual, ai ou fusion.</td></tr>
+                <tr><td>RN05</td><td>Imagem preferencial</td><td>Se houver upload, o sistema usa o arquivo local; caso contrário, pode usar URL externa ou imagem gerada.</td></tr>
+                <tr><td>RN06</td><td>Criação com IA</td><td>Quando o Groq estiver configurado e a opção for marcada, nome, tipagens e raridade servem como base para gerar o restante dos campos.</td></tr>
+                <tr><td>RN07</td><td>Fusão</td><td>Uma fusão deve ser composta por dois Pokemon diferentes.</td></tr>
+                <tr><td>RN08</td><td>Dados da fusão</td><td>Quando a IA não estiver ativa, o sistema gera dados combinando tipos, habilidades, golpes e status dos dois Pokemon base.</td></tr>
+                <tr><td>RN09</td><td>SVG gerado</td><td>SVG recebido da IA deve ser sanitizado antes de ser salvo para evitar conteúdo perigoso.</td></tr>
+                <tr><td>RN10</td><td>Pokedex unificada</td><td>Pokemon oficiais e personalizados devem ser acessíveis pela tela de detalhes usando o mesmo padrão de visualização.</td></tr>
+            </tbody>
+        </table>
+        <h2>Observações</h2>
+        <p>
+            A tabela <strong>pokemons</strong> é a fonte de verdade para registros personalizados. Já a PokeAPI continua sendo a fonte de verdade para os Pokemon oficiais. A aplicação une as duas fontes apenas na camada de listagem, busca, visualização e seleção para fusão.
+        </p>
+        <div class="page-number">6</div>
+    </section>
+
+    <section class="page">
+        <h1>3.4. Histórias de Usuários</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>História</th>
+                    <th>Critério de Aceitação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HU01</td>
+                    <td>Como usuário, quero listar todos os Pokemon para navegar pelo catálogo.</td>
+                    <td>A tela deve exibir cards paginados com imagem, nome, ID, tipagem, geração e evoluções.</td>
+                </tr>
+                <tr>
+                    <td>HU02</td>
+                    <td>Como usuário, quero pesquisar por nome ou ID para encontrar rapidamente um Pokemon.</td>
+                    <td>A busca deve retornar Pokemon oficiais e personalizados compatíveis com o termo informado.</td>
+                </tr>
+                <tr>
+                    <td>HU03</td>
+                    <td>Como usuário, quero filtrar por tipo e geração para refinar os resultados.</td>
+                    <td>Os filtros devem alterar a listagem mantendo os parâmetros selecionados.</td>
+                </tr>
+                <tr>
+                    <td>HU04</td>
+                    <td>Como usuário, quero clicar em um Pokemon para abrir sua Pokedex detalhada.</td>
+                    <td>O sistema deve redirecionar para a tela de detalhes com as informações do Pokemon escolhido.</td>
+                </tr>
+                <tr>
+                    <td>HU05</td>
+                    <td>Como criador, quero cadastrar um Pokemon manualmente para adicioná-lo ao site.</td>
+                    <td>Ao salvar com dados válidos, o Pokemon deve aparecer na Pokedex e na lista.</td>
+                </tr>
+                <tr>
+                    <td>HU06</td>
+                    <td>Como criador, quero enviar uma imagem para representar meu Pokemon.</td>
+                    <td>O arquivo deve ser armazenado e exibido nos cards e na tela de detalhes.</td>
+                </tr>
+                <tr>
+                    <td>HU07</td>
+                    <td>Como criador, quero usar o Groq para gerar dados automaticamente.</td>
+                    <td>Com chave configurada, a IA deve retornar dados estruturados para preencher o registro.</td>
+                </tr>
+                <tr>
+                    <td>HU08</td>
+                    <td>Como criador, quero fundir dois Pokemon para criar uma nova espécie.</td>
+                    <td>A fusão deve ser salva como novo Pokemon e ficar disponível na Pokedex.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="page-number">7</div>
+    </section>
+
+    <section class="page">
+        <h1>4. Metodologia</h1>
+        <p>
+            O desenvolvimento foi conduzido por análise incremental do código existente, identificação das rotas e views, criação de persistência em banco de dados e evolução das telas conforme os requisitos. O projeto utiliza a arquitetura MVC do Laravel, em que as rotas direcionam requisições para o controller, o controller aciona serviços e models, e as views Blade renderizam a interface.
+        </p>
+        <h2>Tecnologias Utilizadas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tecnologia</th>
+                    <th>Uso no Projeto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Laravel</td><td>Framework principal para rotas, controllers, validação, views, migrations, storage e cache.</td></tr>
+                <tr><td>PHP</td><td>Linguagem utilizada no backend.</td></tr>
+                <tr><td>MySQL</td><td>Banco de dados utilizado para persistir Pokemon personalizados.</td></tr>
+                <tr><td>Blade</td><td>Motor de templates usado nas telas da aplicação.</td></tr>
+                <tr><td>Tailwind CSS</td><td>Estilização responsiva das interfaces.</td></tr>
+                <tr><td>Vite</td><td>Build dos assets frontend do Laravel.</td></tr>
+                <tr><td>PokeAPI</td><td>Fonte externa de dados oficiais de Pokemon.</td></tr>
+                <tr><td>Groq API</td><td>Serviço opcional de IA para geração de descrições e atributos.</td></tr>
+            </tbody>
+        </table>
+        <h2>Organização Técnica</h2>
+        <ul>
+            <li><strong>routes/web.php:</strong> define as rotas web e endpoints internos.</li>
+            <li><strong>PokemonController:</strong> concentra fluxos de listagem, Pokedex, criação, fusão e APIs internas.</li>
+            <li><strong>CustomPokemonRepository:</strong> padroniza acesso aos Pokemon personalizados armazenados no banco.</li>
+            <li><strong>Pokemon model:</strong> representa a tabela pokemons no Eloquent.</li>
+            <li><strong>Migration pokemons:</strong> cria estrutura da tabela e importa dados antigos em JSON quando existirem.</li>
+            <li><strong>Views Blade:</strong> renderizam lista, Pokedex, criação, escolha e fusão.</li>
+        </ul>
+        <div class="page-number">8</div>
+    </section>
+
+    <section class="page">
+        <h1>5. Prototipagem</h1>
+        <p>
+            A prototipagem foi realizada diretamente em views Blade com Tailwind CSS, criando telas navegáveis e funcionais. O foco visual foi manter uma identidade relacionada à Pokedex, com fundos escuros, cards claros, cores de destaque e badges coloridas por tipagem.
+        </p>
+        <h2>Telas Prototipadas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tela</th>
+                    <th>Rota</th>
+                    <th>Elementos Principais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Lista de Pokemon</td><td>/pokedex/lista</td><td>Filtros, cards, imagens, tipagens coloridas, geração, evoluções e paginação.</td></tr>
+                <tr><td>Pokedex</td><td>/pokedex</td><td>Busca, imagem, dados físicos, descrição, status, ataques, evoluções, variantes e botão Random Pokemon.</td></tr>
+                <tr><td>Escolha de Criação</td><td>/pokedex/criar</td><td>Entrada para criação manual ou fusão.</td></tr>
+                <tr><td>Novo Pokemon</td><td>/pokedex/criar/manual</td><td>Formulário completo, upload de imagem, seleção de tipos, raridade e modo Groq.</td></tr>
+                <tr><td>Fusão</td><td>/pokedex/fundir</td><td>Seleção de Pokemon A e B, upload opcional, URL opcional e uso opcional do Groq.</td></tr>
+            </tbody>
+        </table>
+        <h2>Decisões de Interface</h2>
+        <ul>
+            <li>Cards com borda arredondada e imagem centralizada para facilitar reconhecimento visual.</li>
+            <li>Filtros em formulário único para reduzir passos do usuário.</li>
+            <li>Tipagens com cores oficiais aproximadas para leitura rápida.</li>
+            <li>Uso de mensagens de erro do Laravel para validação de formulário.</li>
+            <li>Separação entre criação manual e fusão para evitar confusão no fluxo.</li>
+        </ul>
+        <div class="page-number">9</div>
+    </section>
+
+    <section class="page">
+        <h1>6. Diagramas</h1>
+        <p>
+            Esta seção descreve os principais diagramas do sistema em formato textual e estrutural. Os diagramas representam a arquitetura implementada no projeto, os relacionamentos entre classes, os fluxos de sequência e a modelagem de dados.
+        </p>
+        <h2>Visão Geral da Arquitetura</h2>
+        <div class="flow-box">
+            <h3>Fluxo em Camadas</h3>
+            <ol>
+                <li>Usuário acessa uma rota web, como /pokedex/lista ou /pokedex/criar/manual.</li>
+                <li>Laravel Router direciona a requisição para PokemonController.</li>
+                <li>PokemonController valida entradas, consulta PokeAPI, aciona Groq quando necessário e conversa com CustomPokemonRepository.</li>
+                <li>CustomPokemonRepository usa o model Pokemon para ler e gravar registros na tabela pokemons.</li>
+                <li>Controller retorna uma view Blade ou resposta JSON.</li>
+            </ol>
+        </div>
+        <h2>Principais Componentes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Responsabilidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Router</td><td>Mapear URLs para métodos do controller.</td></tr>
+                <tr><td>PokemonController</td><td>Coordenar regras da aplicação, integrações e respostas.</td></tr>
+                <tr><td>CustomPokemonRepository</td><td>Encapsular persistência e normalização de Pokemon criados.</td></tr>
+                <tr><td>Pokemon Model</td><td>Representar a tabela pokemons via Eloquent.</td></tr>
+                <tr><td>Views Blade</td><td>Exibir a interface final ao usuário.</td></tr>
+                <tr><td>PokeAPI/Groq</td><td>Fornecer dados externos oficiais e geração assistida por IA.</td></tr>
+            </tbody>
+        </table>
+        <div class="page-number">10</div>
+    </section>
+
+    <section class="page">
+        <h1>6.1. Diagrama de Classe</h1>
+        <div class="diagram-grid">
+            <div class="class-box">
+                <h3>PokemonController</h3>
+                <ul>
+                    <li>lista(request, repository)</li>
+                    <li>index(request, repository)</li>
+                    <li>createChoice()</li>
+                    <li>createForm(repository)</li>
+                    <li>storeManual(request, repository)</li>
+                    <li>fusionForm(repository)</li>
+                    <li>storeFusion(request, repository)</li>
+                    <li>search(request, repository)</li>
+                    <li>detalhes(id, repository)</li>
+                </ul>
+            </div>
+            <div class="class-box">
+                <h3>CustomPokemonRepository</h3>
+                <ul>
+                    <li>all()</li>
+                    <li>findByPokedexNumber(number)</li>
+                    <li>nextPokedexNumber()</li>
+                    <li>create(pokemon)</li>
+                    <li>updateByPokedexNumber(number, updates)</li>
+                    <li>deleteByPokedexNumber(number)</li>
+                    <li>toPokedexViewData(stored)</li>
+                    <li>toListCard(stored)</li>
+                </ul>
+            </div>
+            <div class="class-box">
+                <h3>Pokemon Model</h3>
+                <ul>
+                    <li>table: pokemons</li>
+                    <li>fillable: dados do Pokemon</li>
+                    <li>casts: JSON para arrays</li>
+                    <li>timestamps: created_at, updated_at</li>
+                </ul>
+            </div>
+            <div class="class-box">
+                <h3>Serviços Externos</h3>
+                <ul>
+                    <li>PokeAPI: Pokemon oficiais</li>
+                    <li>Google Translate endpoint: tradução de descrições</li>
+                    <li>Groq: geração de conteúdo estruturado</li>
+                    <li>Storage public: imagens enviadas e SVG gerado</li>
+                </ul>
+            </div>
+        </div>
+        <h2>Relacionamentos</h2>
+        <ul>
+            <li>PokemonController depende de CustomPokemonRepository para acessar Pokemon personalizados.</li>
+            <li>CustomPokemonRepository depende de Pokemon Model para operações no banco.</li>
+            <li>PokemonController depende de Http Client para consultar PokeAPI, tradução e Groq.</li>
+            <li>Views Blade dependem dos dados preparados pelo controller.</li>
+        </ul>
+        <div class="page-number">11</div>
+    </section>
+
+    <section class="page">
+        <h1>6.2. Diagrama de Sequência</h1>
+        <h2>Fluxo: Consultar Pokemon na Pokedex</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Origem</th>
+                    <th>Ação</th>
+                    <th>Destino</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Usuário</td><td>Acessa /pokedex?id=25</td><td>Router</td></tr>
+                <tr><td>2</td><td>Router</td><td>Chama PokemonController@index</td><td>PokemonController</td></tr>
+                <tr><td>3</td><td>PokemonController</td><td>Verifica se o ID existe no banco personalizado</td><td>CustomPokemonRepository</td></tr>
+                <tr><td>4</td><td>Repository</td><td>Retorna registro personalizado ou null</td><td>PokemonController</td></tr>
+                <tr><td>5</td><td>PokemonController</td><td>Se não houver registro local, consulta PokeAPI</td><td>PokeAPI</td></tr>
+                <tr><td>6</td><td>PokeAPI</td><td>Retorna dados oficiais do Pokemon</td><td>PokemonController</td></tr>
+                <tr><td>7</td><td>PokemonController</td><td>Monta descrição, evolução, variantes, ataques e locais</td><td>View pokemon.blade.php</td></tr>
+                <tr><td>8</td><td>View</td><td>Renderiza os detalhes</td><td>Usuário</td></tr>
+            </tbody>
+        </table>
+        <h2>Fluxo: Criar Pokemon com IA</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Origem</th>
+                    <th>Ação</th>
+                    <th>Destino</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Usuário</td><td>Preenche nome, tipos, raridade e imagem opcional</td><td>Formulário</td></tr>
+                <tr><td>2</td><td>Formulário</td><td>Envia POST para /pokedex/criar/manual</td><td>PokemonController@storeManual</td></tr>
+                <tr><td>3</td><td>Controller</td><td>Valida dados e número da Pokedex</td><td>Validador Laravel</td></tr>
+                <tr><td>4</td><td>Controller</td><td>Consulta Groq quando configurado</td><td>Groq API</td></tr>
+                <tr><td>5</td><td>Groq API</td><td>Retorna dados estruturados e SVG opcional</td><td>Controller</td></tr>
+                <tr><td>6</td><td>Controller</td><td>Salva upload ou SVG no storage público</td><td>Storage</td></tr>
+                <tr><td>7</td><td>Controller</td><td>Cria payload padronizado</td><td>CustomPokemonRepository</td></tr>
+                <tr><td>8</td><td>Repository</td><td>Persiste o registro</td><td>Tabela pokemons</td></tr>
+                <tr><td>9</td><td>Controller</td><td>Redireciona para a Pokedex do novo Pokemon</td><td>Usuário</td></tr>
+            </tbody>
+        </table>
+        <div class="page-number">12</div>
+    </section>
+
+    <section class="page">
+        <h1>6.3. Banco de Dados</h1>
+        <p>
+            O banco de dados utiliza a tabela <strong>pokemons</strong> para armazenar Pokemon criados manualmente, Pokemon gerados com auxílio do Groq e fusões. A tabela foi modelada para guardar campos simples e também campos JSON, permitindo flexibilidade semelhante ao formato da PokeAPI.
+        </p>
+        <table class="compact">
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Tipo</th>
+                    <th>Finalidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>id</td><td>bigint</td><td>Identificador interno da tabela.</td></tr>
+                <tr><td>pokedex_number</td><td>integer unique</td><td>Número exibido na Pokedex, único por Pokemon.</td></tr>
+                <tr><td>name</td><td>string</td><td>Nome do Pokemon.</td></tr>
+                <tr><td>slug</td><td>string</td><td>Identificador textual baseado no nome.</td></tr>
+                <tr><td>source</td><td>string</td><td>Origem: manual, ai ou fusion.</td></tr>
+                <tr><td>generation</td><td>string</td><td>Geração ou custom.</td></tr>
+                <tr><td>rarity</td><td>string nullable</td><td>Raridade definida pelo usuário ou IA.</td></tr>
+                <tr><td>image_path</td><td>string nullable</td><td>Caminho local da imagem no storage público.</td></tr>
+                <tr><td>image_url</td><td>string nullable</td><td>URL externa de imagem.</td></tr>
+                <tr><td>height, weight</td><td>decimal</td><td>Altura e peso.</td></tr>
+                <tr><td>base_experience</td><td>integer</td><td>Experiência base.</td></tr>
+                <tr><td>description</td><td>text</td><td>Descrição do Pokemon.</td></tr>
+                <tr><td>types</td><td>json</td><td>Lista de tipagens.</td></tr>
+                <tr><td>abilities</td><td>json</td><td>Lista de habilidades.</td></tr>
+                <tr><td>stats</td><td>json</td><td>Status base como HP, ataque, defesa e velocidade.</td></tr>
+                <tr><td>moves</td><td>json</td><td>Lista de ataques.</td></tr>
+                <tr><td>evolutions</td><td>json</td><td>Linha evolutiva.</td></tr>
+                <tr><td>variants</td><td>json</td><td>Formas ou variantes.</td></tr>
+                <tr><td>locations</td><td>json</td><td>Locais relacionados.</td></tr>
+                <tr><td>meta</td><td>json</td><td>Metadados como habitat, raridade e flags especiais.</td></tr>
+                <tr><td>fusion</td><td>json</td><td>Dados dos Pokemon usados na fusão.</td></tr>
+                <tr><td>ai_payload</td><td>json</td><td>Resposta estruturada recebida da IA.</td></tr>
+                <tr><td>created_at, updated_at</td><td>timestamp</td><td>Controle de criação e atualização.</td></tr>
+            </tbody>
+        </table>
+        <div class="page-number">13</div>
+    </section>
+
+    <section class="page">
+        <h1>6.3.1. Modelo Conceitual</h1>
+        <p>
+            Conceitualmente, o sistema trabalha com uma entidade principal, Pokemon Personalizado, ligada a conjuntos de informações que descrevem suas características. Algumas dessas informações são armazenadas como listas ou objetos JSON para manter compatibilidade com a estrutura flexível da PokeAPI.
+        </p>
+        <div class="diagram-grid">
+            <div class="entity-box">
+                <h3>Pokemon Personalizado</h3>
+                <ul>
+                    <li>Possui nome, número, origem e geração.</li>
+                    <li>Possui altura, peso, experiência e descrição.</li>
+                    <li>Possui uma ou mais tipagens.</li>
+                    <li>Pode possuir imagem local ou URL externa.</li>
+                </ul>
+            </div>
+            <div class="entity-box">
+                <h3>Tipagem</h3>
+                <ul>
+                    <li>Representa tipos como fire, water, grass e electric.</li>
+                    <li>É usada para filtros, visualização e geração de golpes.</li>
+                    <li>Cada tipo possui cor visual na listagem.</li>
+                </ul>
+            </div>
+            <div class="entity-box">
+                <h3>Ataque</h3>
+                <ul>
+                    <li>Possui nome, tipo, categoria, poder, precisão, PP e efeito.</li>
+                    <li>Pode ser informado manualmente ou gerado por IA.</li>
+                </ul>
+            </div>
+            <div class="entity-box">
+                <h3>Fusão</h3>
+                <ul>
+                    <li>É resultado de dois Pokemon base diferentes.</li>
+                    <li>Armazena os pais, origem da geração e payload da IA quando existir.</li>
+                    <li>Também se comporta como um Pokemon na Pokedex.</li>
+                </ul>
+            </div>
+            <div class="entity-box">
+                <h3>Imagem</h3>
+                <ul>
+                    <li>Pode ser upload enviado pelo usuário.</li>
+                    <li>Pode ser URL externa.</li>
+                    <li>Pode ser SVG gerado e sanitizado pelo sistema.</li>
+                </ul>
+            </div>
+            <div class="entity-box">
+                <h3>IA Payload</h3>
+                <ul>
+                    <li>Representa os dados estruturados retornados pelo Groq.</li>
+                    <li>Ajuda na auditoria do conteúdo gerado.</li>
+                </ul>
+            </div>
+        </div>
+        <h2>Relacionamentos Conceituais</h2>
+        <ul>
+            <li>Um Pokemon Personalizado possui muitas Tipagens, Habilidades, Estatísticas, Ataques, Evoluções e Variantes.</li>
+            <li>Uma Fusão é um Pokemon Personalizado que possui dois Pokemon base.</li>
+            <li>Uma Imagem pode estar associada a um Pokemon Personalizado.</li>
+            <li>Um IA Payload pode estar associado a Pokemon criados por IA ou fusões geradas por IA.</li>
+        </ul>
+        <div class="page-number">14</div>
+    </section>
+
+    <section class="page">
+        <h1>6.3.2. Modelo Lógico</h1>
+        <p>
+            No modelo lógico implementado, a flexibilidade dos dados foi concentrada em uma tabela principal chamada <strong>pokemons</strong>. Campos que naturalmente seriam tabelas relacionadas em uma normalização completa, como ataques e evoluções, foram armazenados como JSON para simplificar o desenvolvimento e preservar estruturas próximas às da PokeAPI.
+        </p>
+        <h2>Tabela: pokemons</h2>
+        <table class="compact">
+            <thead>
+                <tr>
+                    <th>Grupo</th>
+                    <th>Campos</th>
+                    <th>Descrição Lógica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Identificação</td>
+                    <td>id, pokedex_number, name, slug</td>
+                    <td>Controla identificação interna e identificação exibida ao usuário.</td>
+                </tr>
+                <tr>
+                    <td>Classificação</td>
+                    <td>source, generation, rarity</td>
+                    <td>Define origem, geração e raridade do Pokemon.</td>
+                </tr>
+                <tr>
+                    <td>Imagem</td>
+                    <td>image_path, image_url</td>
+                    <td>Permite usar arquivo local ou URL externa.</td>
+                </tr>
+                <tr>
+                    <td>Dados básicos</td>
+                    <td>height, weight, base_experience, description</td>
+                    <td>Guarda informações principais exibidas na Pokedex.</td>
+                </tr>
+                <tr>
+                    <td>Dados compostos</td>
+                    <td>types, abilities, stats, moves, evolutions, variants, locations</td>
+                    <td>Armazena listas e objetos em formato JSON.</td>
+                </tr>
+                <tr>
+                    <td>Metadados</td>
+                    <td>meta, fusion, ai_payload</td>
+                    <td>Guarda dados extras, informações de fusão e retorno da IA.</td>
+                </tr>
+                <tr>
+                    <td>Auditoria</td>
+                    <td>created_at, updated_at</td>
+                    <td>Registra datas de criação e atualização.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Índices e Restrições</h2>
+        <ul>
+            <li><strong>pokedex_number unique:</strong> impede duplicidade de número na Pokedex.</li>
+            <li><strong>index source/generation:</strong> melhora buscas por origem e geração.</li>
+            <li><strong>index rarity:</strong> permite filtragens ou relatórios por raridade.</li>
+        </ul>
+        <h2>Justificativa do Uso de JSON</h2>
+        <p>
+            Como a PokeAPI fornece dados complexos e variados, o uso de JSON evita excesso de tabelas auxiliares e facilita salvar ataques, status, habilidades, evoluções e metadados gerados por IA. Para um projeto acadêmico e uma Pokedex customizável, essa abordagem reduz complexidade e mantém flexibilidade.
+        </p>
+        <div class="page-number">15</div>
+    </section>
+
+    <section class="page">
+        <h1>7. Conclusão</h1>
+        <p>
+            O site documentado cumpre o objetivo de funcionar como uma Pokedex personalizada, combinando dados oficiais da PokeAPI com registros criados pelo usuário. A aplicação permite consulta, listagem filtrada, visualização detalhada, criação manual, criação assistida por IA, fusão de Pokemon, upload de imagens e persistência em banco MySQL.
+        </p>
+        <p>
+            A estrutura em Laravel favorece organização do código e separação de responsabilidades. O uso de um repositório específico para Pokemon personalizados melhora a padronização dos dados exibidos nas views e reduz o acoplamento entre controller e banco. Já a integração com PokeAPI amplia o conteúdo disponível, enquanto o Groq adiciona uma camada criativa para geração automática de atributos.
+        </p>
+        <p>
+            Como evolução futura, sem considerar jogos, o sistema pode receber autenticação de usuários, painel administrativo, edição visual dos Pokemon cadastrados, versionamento das fusões, favoritos, exportação de dados e normalização adicional do banco em tabelas auxiliares para tipos, golpes e evoluções.
+        </p>
+        <h2>Resultado Final</h2>
+        <ul>
+            <li>Lista nacional com filtros e cards visuais.</li>
+            <li>Pokedex detalhada para Pokemon oficiais e personalizados.</li>
+            <li>Criação de Pokemon com dados completos ou auxílio do Groq.</li>
+            <li>Fusão entre Pokemon oficiais e criados pelo usuário.</li>
+            <li>Persistência de dados e imagens no ambiente da aplicação.</li>
+            <li>Documentação organizada conforme os tópicos solicitados.</li>
+        </ul>
+        <div class="page-number">16</div>
+    </section>
+</body>
+
+</html>
